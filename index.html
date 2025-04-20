@@ -3,31 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>School Management System – Login</title>
+    <title>School Management System</title>
     <!-- تحميل Tailwind CSS مباشرة في المتصفح -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- نمط خلفية منقوشة باستخدام صورة نمطية -->
     <style>
       body {
         /* خلفية منقوشة مع لون أساسي */
-        background-color: #1e40af; /* blue-900 */
-        background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
-        background-repeat: repeat;
+        background-image: url("src/assets/background.png");
       }
     </style>
+
+    <div class="b"></div>
   </head>
   <body class="min-h-screen flex items-center justify-center p-4">
-    <!-- البطاقة البيضاء الرئيسية -->
+    <!-- البطاقة الرئيسية -->
     <div class="bg-white rounded-2xl shadow-lg w-full max-w-sm p-6">
       <!-- العنوان -->
       <h1 class="text-center text-2xl font-bold text-blue-900 mb-6">
         SCHOOL MANAGEMENT SYSTEM
       </h1>
 
-      <!-- نموذج الدخول -->
+      <!--  الدخول -->
       <form class="space-y-4" id="loginForm">
         <input type="hidden" name="role" id="roleInput" />
-        <!-- حقل الإيميل -->
+        <!--  الإيميل -->
         <div>
           <label for="email" class="block text-gray-700 text-left mb-1"
             >Email Address</label
@@ -36,7 +36,6 @@
             class="flex items-center border border-gray-300 rounded-lg px-3 py-2"
           >
             <svg
-              xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5 text-gray-400"
               fill="none"
               viewBox="0 0 24 24"
@@ -59,7 +58,7 @@
           </div>
         </div>
 
-        <!-- حقل كلمة المرور -->
+        <!--  كلمة المرور -->
         <div>
           <label for="password" class="block text-gray-700 text-left mb-1"
             >Password</label
@@ -67,26 +66,7 @@
           <div
             class="flex items-center border border-gray-300 rounded-lg px-3 py-2"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 text-gray-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 11c.828 0 1.5.672 1.5 1.5S12.828 14 12 14s-1.5-.672-1.5-1.5S11.172 11 12 11z"
-              />
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 11V7a6 6 0 1112 0v4"
-              />
-            </svg>
+            <svg class="h-5 w-5 text-gray-400"></svg>
             <input
               id="password"
               type="password"
@@ -101,7 +81,6 @@
             >
               <svg
                 id="eyeIcon"
-                xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 text-gray-400"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -177,7 +156,7 @@
       </div>
     </div>
 
-    <!-- سكربت للتحكم وإضافة تفاعلية -->
+    <!--  للتحكم وإضافة تفاعلية -->
     <script>
       function togglePassword() {
         const pwd = document.getElementById("password");
