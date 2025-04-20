@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>School Management System – Login</title>
+    <!-- تحميل Tailwind CSS مباشرة في المتصفح -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- نمط خلفية منقوشة باستخدام صورة نمطية -->
+    <style>
+      body {
+        /* خلفية منقوشة مع لون أساسي */
+        background-color: #1e40af; /* blue-900 */
+        background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+        background-repeat: repeat;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex items-center justify-center p-4">
+    <!-- البطاقة البيضاء الرئيسية -->
+    <div class="bg-white rounded-2xl shadow-lg w-full max-w-sm p-6">
+      <!-- العنوان -->
+      <h1 class="text-center text-2xl font-bold text-blue-900 mb-6">
+        SCHOOL MANAGEMENT SYSTEM
+      </h1>
+
+      <!-- نموذج الدخول -->
+      <form class="space-y-4" id="loginForm">
+        <input type="hidden" name="role" id="roleInput" />
+        <!-- حقل الإيميل -->
+        <div>
+          <label for="email" class="block text-gray-700 text-left mb-1"
+            >Email Address</label
+          >
+          <div
+            class="flex items-center border border-gray-300 rounded-lg px-3 py-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16 12H8m8 0l-8 8m8-8l-8-8"
+              />
+            </svg>
+            <input
+              id="email"
+              type="email"
+              placeholder="Email Address"
+              class="ml-2 w-full focus:outline-none text-left"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- حقل كلمة المرور -->
+        <div>
+          <label for="password" class="block text-gray-700 text-left mb-1"
+            >Password</label
+          >
+          <div
+            class="flex items-center border border-gray-300 rounded-lg px-3 py-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 11c.828 0 1.5.672 1.5 1.5S12.828 14 12 14s-1.5-.672-1.5-1.5S11.172 11 12 11z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 11V7a6 6 0 1112 0v4"
+              />
+            </svg>
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              class="ml-2 w-full focus:outline-none text-left"
+              required
+            />
+            <button
+              type="button"
+              onclick="togglePassword()"
+              class="ml-2 focus:outline-none"
+            >
+              <svg
+                id="eyeIcon"
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-gray-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  id="eyeOpen"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  id="eyeOpen2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- زر تسجيل الدخول -->
+        <button
+          type="submit"
+          class="w-full bg-blue-900 text-white py-2 rounded-lg font-medium"
+        >
+          Login
+        </button>
+      </form>
+
+      <!-- اختيار الدور -->
+      <p class="text-center text-gray-500 mt-6 mb-4">Login as</p>
+      <div class="flex justify-around" id="roleContainer">
+        <!-- طالب -->
+        <div
+          class="flex flex-col items-center cursor-pointer role-card border-2 border-gray-200 rounded-lg p-2"
+          data-role="Student"
+        >
+          <img
+            src="src/assets/Student.png"
+            alt="Student"
+            class="w-16 h-16 rounded-full"
+          />
+          <span class="mt-1 text-gray-900">Student</span>
+        </div>
+        <!-- مدرس -->
+        <div
+          class="flex flex-col items-center cursor-pointer role-card border-2 border-gray-200 rounded-lg p-2"
+          data-role="Teacher"
+        >
+          <img
+            src="src/assets/Teacher.png"
+            alt="Teacher"
+            class="w-16 h-16 rounded-full"
+          />
+          <span class="mt-2 text-gray-700">Teacher</span>
+        </div>
+        <!-- مدير -->
+        <div
+          class="flex flex-col items-center cursor-pointer role-card border-2 border-gray-200 rounded-lg p-2"
+          data-role="Principal"
+        >
+          <img
+            src="src/assets/Principal.png"
+            alt="Principal"
+            class="w-16 h-16 rounded-full"
+          />
+          <span class="mt-2 text-gray-700">Principal</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- سكربت للتحكم وإضافة تفاعلية -->
+    <script>
+      function togglePassword() {
+        const pwd = document.getElementById("password");
+        pwd.type = pwd.type === "password" ? "text" : "password";
+      }
+      // إضافة تفاعل لأزرار الأدوار
+      const roleCards = document.querySelectorAll(".role-card");
+      const roleInput = document.getElementById("roleInput");
+      roleCards.forEach((card) => {
+        card.addEventListener("click", () => {
+          // إزالة التحديد من الكل
+          roleCards.forEach((c) =>
+            c.classList.remove("border-blue-600", "ring-2", "ring-blue-300")
+          );
+          // تمييز العنصر المختار
+          card.classList.add("border-blue-600", "ring-2", "ring-blue-300");
+          // تخزين القيمة في الحقل المخفي
+          roleInput.value = card.dataset.role;
+        });
+      });
+    </script>
+  </body>
+</html>
